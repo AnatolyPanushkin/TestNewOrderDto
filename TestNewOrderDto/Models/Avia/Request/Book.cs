@@ -1,5 +1,5 @@
 ﻿namespace Contracts.Avia;
-public class Book : IValidatable
+public class Book
 {
     public string OfferID { get; set; }
     public List<Passenger> Passengers { get; set; }

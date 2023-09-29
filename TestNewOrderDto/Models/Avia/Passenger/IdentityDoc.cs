@@ -1,6 +1,6 @@
 ﻿namespace Contracts.Avia
 {
-    public class IdentityDoc : IValidatable
+    public class IdentityDoc 
     {
         public string Surname{ get; set; }
         public string DocNumber { get; set; }

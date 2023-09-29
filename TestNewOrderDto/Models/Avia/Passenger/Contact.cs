@@ -1,7 +1,7 @@
 ﻿using System.Text.RegularExpressions;
 
 namespace Contracts.Avia;
-public class Contact : IValidatable
+public class Contact 
 {
     public string EmailAddress { get; set; }
     public string? OtherAddress { get; set; }

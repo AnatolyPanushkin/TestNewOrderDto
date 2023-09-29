@@ -1,6 +1,6 @@
 ﻿namespace Contracts.Avia
 {
-    public class Passenger : IValidatable
+    public class Passenger 
     {
         public string Id { get; set; }
         public DateTime Birthday { get; set; }

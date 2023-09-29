@@ -1,5 +1,5 @@
 ﻿namespace Contracts.Avia;
-public class FindTrips : IValidatable
+public class FindTrips 
 {
     /// <summary>
     /// Код пункта отправления

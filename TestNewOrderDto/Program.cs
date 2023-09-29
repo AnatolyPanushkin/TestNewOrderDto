@@ -2,6 +2,26 @@
 
 using System.Xml.Serialization;
 using Contracts.Models.NewAvia;
+using MixVel.Models.Extra;
+using Carrier = Contracts.Models.NewAvia.Carrier;
+using City = Contracts.Models.NewAvia.City;
+using ContactInfo = Contracts.Avia.ContactInfo;
+using Passenger = Contracts.Models.NewAvia.Passenger;
+using Segment = Contracts.Models.NewAvia.Segment;
+using Tariff = Contracts.Models.NewAvia.Tariff;
+using Tax = Contracts.Models.NewAvia.Tax;
+using Ticket = Contracts.Models.NewAvia.Ticket;
+
+
+
+    Console.WriteLine("fdfs");
+    using (  StreamReader reader = new StreamReader(@"C:\Users\User\Downloads\Telegram Desktop\15_23_15_MixVel_api_Order_change_Response.xml"))
+    {
+        XmlSerializer serializer = new XmlSerializer(typeof(OrderViewRS.Message));
+        var message = (OrderViewRS.Message) serializer.Deserialize(reader);
+
+        var newOrderDto = message.Map();
+    }
 
 public static class OrderViewMapper
 {
@@ -245,4 +265,46 @@ public interface IResponse
     /// </summary>
     /// <returns></returns>
     IServiceError GetError();
+}
+
+public class DataLists
+{
+    [XmlArray(ElementName = "ContactInfoList")]
+    public List<global::ContactInfo> ContactInfoList { get; set; }
+    [XmlArray(ElementName = "BaggageAllowanceList")]
+    public List<BaggageAllowance> BaggageAllowanceList { get; set; }
+    [XmlArray(ElementName = "OriginDestList")]
+    public List<OriginDest> OriginDestList { get; set; }
+    [XmlArray(ElementName = "PaxJourneyList")]
+    public List<PaxJourney> PaxJourneyList { get; set; }
+    [XmlArray(ElementName = "PaxList")]
+    public List<Pax> PaxList { get; set; }
+    [XmlArray(ElementName = "PaxSegmentList")]
+    public List<PaxSegment> PaxSegmentList { get; set; }
+    [XmlArray(ElementName = "PriceClassList")]
+    public List<PriceClass> PriceClassList { get; set; }
+    [XmlArray(ElementName = "ServiceDefinitionList")]
+    public List<ServiceDefinition> ServiceDefinitionList { get; set; }
+    [XmlArray(ElementName = "ValidatingPartyList")]
+    public List<ValidatingParty> ValidatingPartyList { get; set; }
+    [XmlArray(ElementName = "PaxSegmentRemarkList")]
+    public List<PaxSegmentRemark> PaxSegmentRemarkList { get; set; }
+    [XmlArray(ElementName = "PenaltyList")]
+    public List<Penalty> PenaltyList { get; set; }
+}
+
+public class ContactInfo
+{
+    public ContactInfo()
+    {
+    }
+
+    [XmlElement(ElementName = "ContactInfoID")]
+    public string ContactInfoID { get; set; }
+    [XmlElement(ElementName = "EmailAddress")]
+    public EmailAddress EmailAddress { get; set; }
+    [XmlElement(ElementName = "OtherAddress")]
+    public OtherAddress OtherAddress { get; set; }
+    [XmlElement(ElementName = "Phone")]
+    public List<Phone> Phones { get; set; }
 }
